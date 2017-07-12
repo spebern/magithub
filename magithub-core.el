@@ -421,7 +421,7 @@ See `magithub-features'."
   "Tries to parse a remote url into a GitHub repository object"
   (when (and url (string-match (rx bol (+ any) (or "/" ":")
                                    (group (+ any)) "/" (group (+ any))
-                                   ".git" eol)
+                                   (? ".git") eol)
                                url))
     `((owner (login . ,(match-string 1 url)))
       (name . ,(match-string 2 url)))))
